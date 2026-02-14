@@ -27,10 +27,13 @@ A full-stack Task Management application built with the **MERN Stack** (MongoDB,
 
 ### **Backend (Server)**
 -   **Node.js & Express.js**: Robust backend runtime and framework.
--   **MongoDB & Mongoose**: NoSQL database for flexible data storage.
 -   **Firebase Admin SDK**: For secure server-side token verification.
 -   **Cors**: To handle Cross-Origin Resource Sharing.
 -   **Dotenv**: For environment variable management.
+
+### **Database**
+-   **MongoDB Atlas**: Cloud-based NoSQL database service.
+-   **Mongoose**: ODM for MongoDB.  
 
 ---
 
