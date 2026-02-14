@@ -50,7 +50,15 @@ export default function Dashboard() {
         }
     };
 
-    // ...
+    const handleOpenModal = (task = null) => {
+        setTaskToEdit(task);
+        setIsModalOpen(true);
+    };
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+        setTaskToEdit(null);
+    };
 
     const handleSaveTask = async (taskData) => {
         try {
