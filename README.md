@@ -130,14 +130,14 @@ npm run dev
 
 ---
 
-## 🧪 Demo Credentials (Optional)
+<!-- ## 🧪 Demo Credentials (Optional)
 
 You can simple Register a new account, or use these demo details if setup in your DB:
 
 *   **Email**: `user1@gmail.com`
 *   **Password**: `user12345`
 
----
+--- -->
 
 ## � Project Structure
 
@@ -162,4 +162,4 @@ Task_Manager/
 └── README.md               # Project Documentation
 ```
 
-Happy Coding! 🚀
+
