@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import api from '../utils/api';
-// ... other imports
+import { useAuth } from '../contexts/AuthContext';
+import Sidebar from '../components/Sidebar';
+import Header from '../components/Header';
+import BoardView from '../components/BoardView';
+import TaskModal from '../components/TaskModal';
+import ConfirmationModal from '../components/ConfirmationModal';
 
 export default function Dashboard() {
     const { currentUser } = useAuth();
