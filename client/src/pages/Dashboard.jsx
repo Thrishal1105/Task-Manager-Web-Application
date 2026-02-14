@@ -1,11 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { useAuth } from '../contexts/AuthContext';
-import Sidebar from '../components/Sidebar';
-import Header from '../components/Header';
-import BoardView from '../components/BoardView';
-import TaskModal from '../components/TaskModal';
-import ConfirmationModal from '../components/ConfirmationModal';
+import api from '../utils/api';
+// ... other imports
 
 export default function Dashboard() {
     const { currentUser } = useAuth();
@@ -29,8 +24,6 @@ export default function Dashboard() {
         confirmText: 'Confirm'
     });
 
-    const API_URL = 'http://localhost:5000/api/tasks';
-
     useEffect(() => {
         fetchTasks();
     }, []);
@@ -43,7 +36,7 @@ export default function Dashboard() {
     const fetchTasks = async () => {
         try {
             const config = await getAuthHeader();
-            const response = await axios.get(API_URL, config);
+            const response = await api.get('/api/tasks', config);
             setTasks(response.data);
         } catch (error) {
             console.error("Error fetching tasks:", error);
@@ -52,25 +45,15 @@ export default function Dashboard() {
         }
     };
 
-    const handleOpenModal = (task = null) => {
-        setTaskToEdit(task);
-        setIsModalOpen(true);
-    };
-
-    const handleCloseModal = () => {
-        setIsModalOpen(false);
-        setTaskToEdit(null);
-    };
+    // ...
 
     const handleSaveTask = async (taskData) => {
         try {
             const config = await getAuthHeader();
-            if (taskToEdit && taskToEdit._id) { // Check for _id to determine if it's an existing task
-                // Update existing task
-                await axios.put(`${API_URL}/${taskToEdit._id}`, taskData, config);
+            if (taskToEdit && taskToEdit._id) {
+                await api.put(`/api/tasks/${taskToEdit._id}`, taskData, config);
             } else {
-                // Create new task
-                await axios.post(API_URL, taskData, config);
+                await api.post('/api/tasks', taskData, config);
             }
             fetchTasks();
             handleCloseModal();
@@ -96,9 +79,9 @@ export default function Dashboard() {
                 try {
                     const config = await getAuthHeader();
                     if (isPermanent) {
-                        await axios.delete(`${API_URL}/${taskId}`, config);
+                        await api.delete(`/api/tasks/${taskId}`, config);
                     } else {
-                        await axios.put(`${API_URL}/${taskId}`, { status: 'trash' }, config);
+                        await api.put(`/api/tasks/${taskId}`, { status: 'trash' }, config);
                     }
                     fetchTasks();
                 } catch (error) {
@@ -110,10 +93,9 @@ export default function Dashboard() {
     };
 
     const handleStatusChange = async (taskId, newStatus) => {
-        // Optimistic update could go here
         try {
             const config = await getAuthHeader();
-            await axios.put(`${API_URL}/${taskId}`, { status: newStatus }, config);
+            await api.put(`/api/tasks/${taskId}`, { status: newStatus }, config);
             fetchTasks();
         } catch (error) {
             console.error("Error updating status:", error);
@@ -130,7 +112,7 @@ export default function Dashboard() {
             onConfirm: async () => {
                 try {
                     const config = await getAuthHeader();
-                    await axios.put(`${API_URL}/${taskId}`, { status: 'todo' }, config);
+                    await api.put(`/api/tasks/${taskId}`, { status: 'todo' }, config);
                     fetchTasks();
                 } catch (error) {
                     console.error("Error restoring task:", error);

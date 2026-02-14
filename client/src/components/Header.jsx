@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { FaSearch, FaPlus, FaUserCircle, FaKey, FaSignOutAlt, FaBars, FaSun, FaMoon } from 'react-icons/fa';
 import { auth } from '../firebase';
-import axios from 'axios';
+import api from '../utils/api';
 import { useAuth } from '../contexts/AuthContext';
 import { useTheme } from '../contexts/ThemeContext';
 
@@ -33,7 +33,7 @@ const Header = ({ onSearch, onAddTask, onToggleSidebar }) => {
         setLoading(true);
         try {
             const token = await currentUser.getIdToken();
-            await axios.post('http://localhost:5000/api/users/change-password',
+            await api.post('/api/users/change-password',
                 { newPassword },
                 { headers: { Authorization: `Bearer ${token}` } }
             );
