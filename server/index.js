@@ -3,12 +3,18 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const admin = require('firebase-admin');
-const serviceAccount = require('./serviceAccountKey.json');
+let serviceAccount;
 
-dotenv.config();
-
-const app = express();
-const PORT = process.env.PORT || 5000;
+try {
+  if (process.env.FIREBASE_SERVICE_ACCOUNT) {
+    serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
+  } else {
+    serviceAccount = require('./serviceAccountKey.json');
+  }
+} catch (error) {
+  console.error('Failed to load Firebase credentials:', error);
+  process.exit(1);
+}
 
 // Initialize Firebase Admin
 admin.initializeApp({
