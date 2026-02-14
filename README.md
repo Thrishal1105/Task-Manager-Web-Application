@@ -15,6 +15,17 @@ A full-stack Task Management application built with the **MERN Stack** (MongoDB,
 
 ---
 
+## 🌐 Live Deployment
+
+| Service | Platform | URL |
+| :--- | :--- | :--- |
+| **Frontend** | Netlify | [Click Here](https://your-netlify-app-url.netlify.app) (Replace with your actual URL) |
+| **Backend** | Render | [Click Here](https://task-manager-api-xw8d.onrender.com) |
+
+> **Note**: The backend on Render may spin down after inactivity. Please allow up to a minute for the first request (login/registration) to process.
+
+---
+
 ## � Tech Stack
 
 ### **Frontend (Client)**
@@ -52,8 +63,8 @@ Before running the project, make sure you have the following installed:
 ### 1. Clone the Repository
 
 ```bash
-git clone <repository-url>
-cd Task_Manager
+git clone https://github.com/Thrishal1105/Task-Manager-Web-Application.git
+cd Task-Manager-Web-Application
 ```
 
 ### 2. Setup the Server (Backend)
