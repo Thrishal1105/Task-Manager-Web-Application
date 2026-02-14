@@ -19,7 +19,7 @@ A full-stack Task Management application built with the **MERN Stack** (MongoDB,
 
 | Service | Platform | URL |
 | :--- | :--- | :--- |
-| **Frontend** | Netlify | [Click Here](https://your-netlify-app-url.netlify.app) (Replace with your actual URL) |
+| **Frontend** | Netlify | [Click Here](https://task-manager-webs.netlify.app) |
 | **Backend** | Render | [Click Here](https://task-manager-api-xw8d.onrender.com) |
 
 > **Note**: The backend on Render may spin down after inactivity. Please allow up to a minute for the first request (login/registration) to process.
@@ -45,6 +45,12 @@ A full-stack Task Management application built with the **MERN Stack** (MongoDB,
 ### **Database**
 -   **MongoDB Atlas**: Cloud-based NoSQL database service.
 -   **Mongoose**: ODM for MongoDB.  
+
+
+### *Deployed on*
+
+-   **Frontend**: Netlify
+-   **Backend**: Render
 
 ---
 
@@ -175,5 +181,5 @@ Task_Manager/
 │   └── ...
 └── README.md               # Project Documentation
 ```
-
+Happy Coding! 🚀
 
